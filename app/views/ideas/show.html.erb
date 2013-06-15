@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @idea.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @idea.description %>
+</p>
+
+<p>
+  <b>Picture:</b>
+  <%= image_tag(@idea.picture_url, :width => 300) if @idea.picture.present? %>
+</p>
+
+<p>
+  <b>Goal:</b>
+  <%= @idea.goal %>
+</p>
+
+<p>
+  <b>Current:</b>
+  <%= @idea.current %>
+</p>
+
+<p>
+  <b>Deadline:</b>
+  <%= @idea.deadline %>
+</p>
+
+<h3>Donar:</h3>
+
+<form action="/ideas/<%= @idea.id %>/donar" method="POST">
+  <div class="field">
+    <label for="monto">
+      Monto
+    </label>
+    <br />
+    <input id="monto" type="text" size="30" name="monto" ></input>
+  </div>
+
+  <div class="actions">
+    <input type="submit" value="Donar" name="commit"></input>
+  </div>
+</form>
+
+<%= link_to 'Edit', edit_idea_path(@idea) %> |
+<%= link_to 'Back', ideas_path %>
